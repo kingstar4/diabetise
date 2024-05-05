@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetise</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;800&family=Pacifico&family=Poppins:wght@300;400;500;600;700&family=Rubik+Maze&family=Tilt+Prism&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="cover">
+        <h1>Diabetise Test</h1>
+        <form action="{{ url_for('predict')}}" method="post" class="form">
+
+            <div class="formBackground">
+                <div class="modal">
+                    <div class="textfield">
+                        <input type="number" name="preg" placeholder="No. of Pregnancies" required>
+                    </div>
+                    <div class="textfield">
+                        <input type="number" name="glu" placeholder="Glucose Level" required>
+                    </div>
+                    <div class="textfield">
+                        <input type="number" name="BP" placeholder="Blood Pressure" required>
+                    </div>
+                    <div class="textfield">
+                        <input type="number" name="SK" placeholder="Skin Thinkness" required>
+                    </div>
+                    <div class="textfield">
+                        <input type="number" name="IL" placeholder="Insulin Level" required>
+                    </div>
+                    <div class="textfield">
+                        <input type="text" name="BMI" placeholder="BMI" required>
+                    </div>
+                    <div class="textfield">
+                        <input type="text" name="DPF" placeholder="Diabetes Pedigree Function" required>
+                    </div>
+                    <div class="textfield">
+                        <input type="number" name="AGE" placeholder="Age" required>
+                    </div>
+                    <br><br>
+
+                    <button type="submit" value="submit" class="submitBtn" id="mybtn">Submit</button>
+
+                </div>
+            </div>
+
+        </form>
+        <!-- <button type="submit" id="submitBtn">submit</button> -->
+
+        <div id="predict-Modal" class="prediction-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2>Test Result</h2>
+                </div>
+                <div class="predict">
+                    <h2>
+                        {{ prediction_text }}
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="predict">
+            <h2>
+            {{ prediction_text }}
+            </h2>
+        </div> -->
+
+    </div>
+    <script>
+        // Get the modal
+        var modal = document.getElementById("predict-Modal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("mybtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal 
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>
