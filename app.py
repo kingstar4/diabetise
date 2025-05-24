@@ -15,6 +15,7 @@ def home():
 def predict():
     '''
     For rendering results on HTML GUIS
+    This function takes the necessary inputs and make predictions with them
     '''
     if request.method == 'POST':
 
